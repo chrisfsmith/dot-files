@@ -1,0 +1,59 @@
+[user]
+	name = Chris Smith
+	email = csmith@bloomhealthco.com
+[core]
+	excludesfile = /Users/csmith/.gitignore_global
+[diff]
+	external = "/Applications/DeltaWalker.app/Contents/MacOS/git-diff"
+[difftool]
+	prompt = false
+[merge]
+	tool = mydeltawalker
+[mergetool  "deltawalker"]
+	cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+[mergetool]
+	keepBackup = false
+[color]
+	ui = true
+[alias]
+	co = checkout
+	ci = commit
+	stat = status
+	last = log -1 HEAD
+	
+	# remove files from index
+	unstage = reset HEAD --
+	
+	# nice one liner for status
+	st = status --short
+	
+	# pretty ascii graph log format
+	l = log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%an]%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	
+	# pretty log with all branches
+	la = !git l --all
+	
+	# show just commits currently decorated by branch/tag pointers
+	# really useful for high level picture
+	ld = !git l --all --simplify-by-decoration
+
+	assume   = update-index --assume-unchanged
+	unassume = update-index --no-assume-unchanged
+	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+
+	snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+	
+[difftool "bbedit"]
+	cmd = /usr/local/bin/bbdiff --resume --reverse --wait \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "kdiff3"]
+	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = false
+[push]
+	default = simple
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/bbdiff --resume --reverse --wait \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = true
