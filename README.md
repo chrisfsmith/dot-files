@@ -1,4 +1,4 @@
 dot-files
 =========
 
-Configuration file for bash, git, etc.
+Configuration files for bash, git, etc.
