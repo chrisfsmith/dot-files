@@ -43,17 +43,13 @@
 
 	snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 	
+	bbdiff = difftool --tool=bbedit
+	
 [difftool "bbedit"]
 	cmd = /usr/local/bin/bbdiff --resume --reverse --wait \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "kdiff3"]
-	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+#	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
 	trustExitCode = false
 [push]
 	default = simple
-[difftool "sourcetree"]
-	cmd = /usr/local/bin/bbdiff --resume --reverse --wait \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
-	trustExitCode = true

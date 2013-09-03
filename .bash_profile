@@ -35,6 +35,7 @@ export BLOOM_GIT_SANDBOX='/Users/csmith/Developer/projects/bloom'
 . $BLOOM_GIT_SANDBOX/dev_scripts/bash/rabbitmq.sh
 #. $BLOOM_GIT_SANDBOX/dev_scripts/bash/shauns-stuff.sh
 #. $BLOOM_GIT_SANDBOX/dev_scripts/bash/truecrypt-config-switch.sh
+. $BLOOM_GIT_SANDBOX/dev_scripts/bash/vagrant.sh
 #. $BLOOM_GIT_SANDBOX/dev_scripts/bash/vin_dev.sh
 
 
