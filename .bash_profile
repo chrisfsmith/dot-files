@@ -3,11 +3,6 @@
 #
 export DOT_FILES=~/Developer/projects/dot-files
 
-#
-# Bit Bucket Sandbox
-#
-export BITBUCKET_SANDBOX=~/Developer/projects
-
 
 #
 # GIT
@@ -24,6 +19,7 @@ export BLOOM_GIT_SANDBOX='/Users/csmith/Developer/projects/bloom'
 #. $BLOOM_GIT_SANDBOX/dev_scripts/bash/bloom-logs.sh
 . $BLOOM_GIT_SANDBOX/dev_scripts/bash/bloom-plugins.sh
 #. $BLOOM_GIT_SANDBOX/dev_scripts/bash/ctags.sh
+. $BLOOM_GIT_SANDBOX/dev_scripts/bash/gradle.sh
 . $BLOOM_GIT_SANDBOX/dev_scripts/bash/grep-colors.sh
 #. $BLOOM_GIT_SANDBOX/dev_scripts/bash/groovy-grails-switch.sh
 . $BLOOM_GIT_SANDBOX/dev_scripts/bash/groovy-grails.sh
@@ -49,6 +45,8 @@ export PS1='\n\e[0;32m\w$(gitmin_ps1)$RESET\n '
 # Groovy/Grails
 #
 export GRAILS_OPTS="-Xms2048m -Xmx2048m -XX:PermSize=128m -XX:MaxPermSize=1024m -server"
+export GRADLE_OPTS="-Xmx2G -Xms2G -XX:NewSize=512m -XX:MaxNewSize=512m -XX:MaxPermSize=1G"
+#export JAVA_OPTS="-Xmx2G -Xms2G -XX:NewSize=512m -XX:MaxNewSize=512m -XX:MaxPermSize=1G"
 
 
 #
@@ -63,16 +61,21 @@ alias mysqlstop='sudo launchctl unload -w /Library/LaunchDaemons/com.mysql.mysql
 # Miscellaneous aliases
 #
 alias bloom='cd $BLOOM_GIT_SANDBOX/'
-alias bd='cd $BLOOM_GIT_SANDBOX/lib_domain'
 alias bh='cd $BLOOM_GIT_SANDBOX/webapp_bloomhealth/bloomhealth'
 alias bb='cd $BLOOM_GIT_SANDBOX/webapp_bhbo/bhbo'
 alias bor='cd $BLOOM_GIT_SANDBOX/bloomhealth'
+alias vm='cd $BLOOM_GIT_SANDBOX/provisioning/vagrant/vagrantmanager'
 
 #
 # Marks
 #
 . $DOT_FILES/marks/marks.sh 
 . $DOT_FILES/marks/marks-command-completion.sh 
+
+#
+# switch to Java 6
+#
+java6
 
 #
 # PATH
