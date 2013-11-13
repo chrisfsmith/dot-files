@@ -8,11 +8,17 @@
 [difftool]
 	prompt = false
 [merge]
-	tool = mydeltawalker
+#	tool = mydeltawalker
+	tool = p4merge
 [mergetool  "deltawalker"]
 	cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 [mergetool]
 	keepBackup = false
+[mergetool "p4merge"]
+  cmd = /Applications/p4merge.app/Contents/MacOS/p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
 [color]
 	ui = true
 [alias]
