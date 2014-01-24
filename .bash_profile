@@ -40,6 +40,10 @@ export BLOOM_GIT_SANDBOX='/Users/csmith/Developer/projects/bloom'
 #
 export PS1='\n\e[0;32m\w$(gitmin_ps1)$RESET\n '
 
+#
+# history
+#
+export HISTCONTROL=ignoreboth:erasedups
 
 #
 # Groovy/Grails
@@ -73,9 +77,9 @@ alias vm='cd $BLOOM_GIT_SANDBOX/provisioning/vagrant/vagrantmanager'
 . $DOT_FILES/marks/marks-command-completion.sh 
 
 #
-# switch to Java 6
+# switch to the desired default Java version
 #
-java6
+java7
 
 #
 # PATH
