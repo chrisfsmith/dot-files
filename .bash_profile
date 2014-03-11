@@ -84,7 +84,9 @@ java7
 #
 # PATH
 #
-PATH=~/bin:/usr/local/share/npm/bin:/usr/local/bin:$PATH:/usr/local/sbin:$MYSQL_HOME/bin
+PATH=~/bin:/usr/local/share/npm/bin:/usr/local/bin:$PATH:/usr/local/sbin:$MYSQL_HOME/bin:$HOME/.rvm/bin
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/Users/csmith/.gvm/bin/gvm-init.sh" && ! $(which gvm-init.sh) ]] && source "/Users/csmith/.gvm/bin/gvm-init.sh"
