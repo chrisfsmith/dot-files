@@ -4,12 +4,22 @@
 [core]
 	excludesfile = /Users/csmith/.gitignore_global
 [diff]
-	external = "/Applications/DeltaWalker.app/Contents/MacOS/git-diff"
+    tool = bcomp
+#	external = "/Applications/DeltaWalker.app/Contents/MacOS/git-diff"
 [difftool]
-	prompt = false
+    prompt = false
+[difftool "bcomp"]
+    trustExitCode = true
+    cmd = "/usr/local/bin/bcomp" "$LOCAL" "$REMOTE"
 [merge]
+    tool = bcomp
 #	tool = mydeltawalker
-	tool = p4merge
+#	tool = p4merge
+[mergetool]
+    prompt = false
+[mergetool "bcomp"]
+    trustExitCode = true
+    cmd = "/usr/local/bin/bcomp" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 [mergetool  "deltawalker"]
 	cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 [mergetool]
