@@ -3,52 +3,54 @@
 	email = csmith@bloomhealthco.com
 [core]
 	excludesfile = /Users/csmith/.gitignore_global
-[diff]
-    tool = bcomp
-#	external = "/Applications/DeltaWalker.app/Contents/MacOS/git-diff"
-[difftool]
-    prompt = false
-[difftool "bcomp"]
-    trustExitCode = true
-    cmd = "/usr/local/bin/bcomp" "$LOCAL" "$REMOTE"
-[merge]
-    tool = bcomp
-#	tool = mydeltawalker
-#	tool = p4merge
-[mergetool]
-    prompt = false
-[mergetool "bcomp"]
-    trustExitCode = true
-    cmd = "/usr/local/bin/bcomp" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
-[mergetool  "deltawalker"]
-	cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
-[mergetool]
-	keepBackup = false
-[mergetool "p4merge"]
-  cmd = /Applications/p4merge.app/Contents/MacOS/p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-  keepTemporaries = false
-  trustExitCode = false
-  keepBackup = false
+	editor = bbedit -w
 [color]
 	ui = true
+[push]
+	default = simple
+[diff]
+	tool = bcomp
+[difftool]
+	prompt = false
+[difftool "bcomp"]
+	cmd = "/usr/local/bin/bcomp" \"$LOCAL\" \"$REMOTE\"
+[difftool "bbedit"]
+	cmd = /usr/local/bin/bbdiff --resume --wait \"$LOCAL\" \"$REMOTE\"
+[difftool "deltawalker"]
+	# manually configured to use 'bzr-diff' vs 'git-diff' for the parameters
+	cmd = "/Applications/DeltaWalker.app/Contents/MacOS/bzr-diff" \"$LOCAL\" \"$REMOTE\"
+[difftool "p4merge"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$LOCAL\" \"$REMOTE\"
+[merge]
+	tool = bcomp
+[mergetool]
+    prompt = false
+	keepBackup = false
+[mergetool "bcomp"]
+    trustExitCode = true
+    cmd = "/usr/local/bin/bcomp" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+[mergetool "deltawalker"]
+	cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-merge' \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+[mergetool "p4merge"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [alias]
 	co = checkout
 	ci = commit
 	stat = status
 	last = log -1 HEAD
-	
+
 	# remove files from index
 	unstage = reset HEAD --
-	
+
 	# nice one liner for status
 	st = status --short
-	
+
 	# pretty ascii graph log format
 	l = log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%an]%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-	
+
 	# pretty log with all branches
 	la = !git l --all
-	
+
 	# show just commits currently decorated by branch/tag pointers
 	# really useful for high level picture
 	ld = !git l --all --simplify-by-decoration
@@ -58,14 +60,10 @@
 	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
 
 	snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
-	
+
 	bbdiff = difftool --tool=bbedit
-	
-[difftool "bbedit"]
-	cmd = /usr/local/bin/bbdiff --resume --reverse --wait \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "kdiff3"]
-#	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3 \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
-	trustExitCode = false
-[push]
-	default = simple
+	bbdiff-dir = difftool --tool=bbedit --dir-diff --no-symlinks
+	bcomp = difftool --tool=bcomp
+	bcomp-dir = difftool --tool=bcomp --dir-diff
+	dw = difftool --tool=deltawalker
+	dw-dir = difftool --tool=deltawalker --dir-diff --no-symlinks
