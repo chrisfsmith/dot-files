@@ -3,7 +3,7 @@
 	email = csmith@bloomhealthco.com
 [core]
 	excludesfile = /Users/csmith/.gitignore_global
-	editor = bbedit -w
+	editor = bbedit --wait
 [color]
 	ui = true
 [push]
@@ -67,3 +67,7 @@
 	bcomp-dir = difftool --tool=bcomp --dir-diff
 	dw = difftool --tool=deltawalker
 	dw-dir = difftool --tool=deltawalker --dir-diff --no-symlinks
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
