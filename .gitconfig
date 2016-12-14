@@ -1,6 +1,8 @@
 [user]
 	name = Chris Smith
-	email = csmith@bloomhealthco.com
+	email = chris.smith@smartthings.com
+[credential]
+	helper = osxkeychain
 [core]
 	excludesfile = /Users/csmith/.gitignore_global
 	editor = bbedit --wait
@@ -34,10 +36,14 @@
 [mergetool "p4merge"]
 	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [alias]
+	cl = clone
 	co = checkout
 	ci = commit
 	stat = status
 	last = log -1 HEAD
+
+	# Hard-reset all working changes
+	wipe = reset --hard HEAD
 
 	# remove files from index
 	unstage = reset HEAD --
@@ -68,6 +74,6 @@
 	dw = difftool --tool=deltawalker
 	dw-dir = difftool --tool=deltawalker --dir-diff --no-symlinks
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
 	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
